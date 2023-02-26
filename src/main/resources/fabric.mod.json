@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "bgb",
+  "version": "${version}",
+  "name": "Boats go Brr",
+  "description": "",
+  "authors": ["Banana"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/bgb/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": ["me.banana.bgb.DataGeneration"],
+    "client": ["me.banana.bgb.client.BgbClient"],
+    "main": ["me.banana.bgb.Bgb"]
+  },
+  "mixins": [
+    "bgb.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
