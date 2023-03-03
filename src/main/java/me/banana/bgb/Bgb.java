@@ -12,8 +12,13 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bgb implements ModInitializer {
     public final static String MOD_ID = "bgb";
+
+    public final static Map<Block, Block> baseBlocks = new HashMap<>();
 
     // normal ice
     public static final SlabBlock ICE_SLAB_BLOCK = registerSlabBlock("ice_slab", Blocks.ICE);
@@ -37,12 +42,16 @@ public class Bgb implements ModInitializer {
         return Registry.register(Registry.ITEM, new Identifier(MOD_ID, id), new BlockItem(block, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
     }
 
-    private static SlabBlock registerSlabBlock(String id, Block block) {
-        return Registry.register(Registry.BLOCK, new Identifier(MOD_ID, id), new SlabBlock(FabricBlockSettings.copyOf(block)));
+    private static SlabBlock registerSlabBlock(String id, Block baseBlock) {
+        SlabBlock block = Registry.register(Registry.BLOCK, new Identifier(MOD_ID, id), new SlabBlock(FabricBlockSettings.copyOf(baseBlock)));
+        baseBlocks.put(block, baseBlock);
+        return block;
     }
 
-    private static StairsBlock registerStairsBlock(String id, Block block) {
-        return Registry.register(Registry.BLOCK, new Identifier(MOD_ID, id), new StairsBlock(block.getDefaultState(), FabricBlockSettings.copyOf(block)));
+    private static StairsBlock registerStairsBlock(String id, Block baseBlock) {
+        StairsBlock block = Registry.register(Registry.BLOCK, new Identifier(MOD_ID, id), new StairsBlock(baseBlock.getDefaultState(), FabricBlockSettings.copyOf(baseBlock)));
+        baseBlocks.put(block, baseBlock);
+        return block;
     }
 
     @Override
