@@ -1,5 +1,7 @@
 ### Fast and Furious: Boatyo Drift
 
+Show off your drifting skills and leave the water:
+
 ![steve drifting from water onto land](imgs/drift.gif)
 
 ### Boats can now go upwards, up to half a block!
